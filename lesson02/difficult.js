@@ -1,25 +1,14 @@
 let num = 266219;
 
-let arr = (num + '').split('');
-let mult = 1;
+let arr = num.toString().split('');
 
-for (let i = 0; i < arr.length; i++) {
-	mult *= arr[i];
-}
+let mult = arr.reduce(function (previous, current) {
+			return previous * current;
+});
 
 console.log(mult);
 
 // Exponentiation
-let exp = mult;
+let exp = mult ** 3;
 
-for (let pow = 3; pow > 1; pow--) {
-		exp *= mult;
-}
-
-alert((exp + '').substr(0, 2));
-
-
-// Method 2
-
-// Привидение Number to String
-// вместо (number + '') используем (number.toString)
+alert(exp.toString().substr(0, 2));
