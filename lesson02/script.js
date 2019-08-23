@@ -1,6 +1,6 @@
 let money = 50000;
 let income = 'freelance';
-let addExpenses = '500, 1000, 150';
+let addExpenses = 'Пятьсот, Одна тысяча, Сто пятьдесят';
 let deposit = true;
 let mission = 1000000;
 let period = 5;
