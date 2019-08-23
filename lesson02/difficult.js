@@ -17,3 +17,9 @@ for (let pow = 3; pow > 1; pow--) {
 }
 
 alert((exp + '').substr(0, 2));
+
+
+// Method 2
+
+// Привидение Number to String
+// вместо (number + '') используем (number.toString)
