@@ -27,18 +27,7 @@ console.log(arr[lang]);
 
 // TASK 2
 
-let namePerson;
-
-switch (+prompt('Введите число: 1 - Артем, 2 - Максим, или любое число')) {
-	case 1:
-		namePerson = 'Артем';
-		break;
-	case 2:
-		namePerson = 'Максим';
-		break;
-	default:
-		namePerson = 'Игорь';
-}
+let namePerson = prompt('Введите имя (Артем, Максим или другое)');
 
 let message = (namePerson == 'Артем') ? 'директор' :
 	(namePerson == 'Максим') ? 'преподаватель' : 'студент';
