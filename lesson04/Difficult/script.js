@@ -1,4 +1,5 @@
-'use strict';
+(function () {
+    'use strict';
 
 // Solution
 
@@ -22,3 +23,5 @@ console.log(test(null));
 console.log(test(undefined));
 console.log(test('   Hello world!!!   '));
 console.log(test('    123456789012345678901234567890123   '));
+
+})();
