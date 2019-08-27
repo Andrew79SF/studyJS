@@ -14,7 +14,6 @@ let test = function(arg) {
 	return newString;
 };
 
-
 // Test
 
 console.log(test(true));
