@@ -6,13 +6,13 @@
 let test = function(arg) {
 	if (typeof arg !== 'string') {
 		return (arg + ' - Это не строка!!! Это - ' + typeof arg);
+	} else {
+		let newString = arg.trim();
+		if (newString.length > 30) {
+			newString = newString.slice(0, 30) + '...';
+		}
+		return newString;
 	}
-
-	let newString = arg.trim();
-	if (newString.length > 30) {
-		newString = newString.slice(0, 30) + '...';
-	}
-	return newString;
 };
 
 // Test
