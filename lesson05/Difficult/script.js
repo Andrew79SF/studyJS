@@ -15,11 +15,11 @@ for (let i = 0; i < arr.length; i++) {
 // Task 2
 console.log();
 
-let temp;
+let temp = true;
 
 for (let x = 2; x <= 100; x++) {
 	for (let y = 2; y < x; y++) {
-		if ((x % y) == 0) {
+		if ((x % y) == 0 && x !== 2) {
 			temp = false;
 			break;
 		} else {
@@ -27,7 +27,7 @@ for (let x = 2; x <= 100; x++) {
 		}
 	}
 	if (temp) {
-		console.log(x);
+		console.log(x + ' : Делители этого числа 1 и ' + x);
 	}
 }
 
