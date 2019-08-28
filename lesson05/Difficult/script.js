@@ -15,18 +15,18 @@ for (let i = 0; i < arr.length; i++) {
 // Task 2
 console.log();
 
-let temp = 0;
+let temp;
 
 for (let x = 2; x <= 100; x++) {
 	for (let y = 2; y < x; y++) {
 		if ((x % y) == 0) {
-			temp = 0;
+			temp = false;
 			break;
 		} else {
-			temp = 1;
+			temp = true;
 		}
 	}
-	if (temp == 1) {
+	if (temp) {
 		console.log(x);
 	}
 }
