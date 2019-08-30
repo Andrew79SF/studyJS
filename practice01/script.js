@@ -5,7 +5,7 @@ let money,
     do {
       money = +prompt('Ваш месячный доход?', 30000);
     }
-    while (isNaN(money) || money === null || money === '');
+    while (isNaN(money) || money === 0);
   };
 
 start();
