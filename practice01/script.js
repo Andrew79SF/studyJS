@@ -3,9 +3,9 @@
 let money,
   start = function () {
     do {
-      money = +prompt('Ваш месячный доход? (0 или Cancel - Нет дохода)', 30000);
+      money = +prompt('Ваш месячный доход?', 30000);
     }
-    while (isNaN(money) || money < 0);
+    while (isNaN(money) || money <= 0);
   };
 
 start();
@@ -34,10 +34,9 @@ let appData = {
 			while (itemIncome == null || itemIncome.trim() === '');
 
 			do {
-        cashIncome = +prompt('Сколько в месяц вы на этом зарабатываете?' +
-        ' (0 или Cancel - нет заработка)', 10000);
+        cashIncome = +prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
 			}
-			while (isNaN(cashIncome) || cashIncome < 0);
+			while (isNaN(cashIncome) || cashIncome <= 0);
 
 			appData.income[itemIncome] = cashIncome;
 		}
@@ -53,15 +52,13 @@ let appData = {
     if (confirm('Есть ли у вас депозит в банке?')) {
       appData.deposit = true;
       do {
-        appData.percentDeposit = +prompt('Какой у вас годовой процент?' +
-        ' (0 или Cancel - безпроцентный вклад)', 10);
+        appData.percentDeposit = +prompt('Какой у вас годовой процент?', 10);
       }
-      while (isNaN(appData.percentDeposit) || appData.percentDeposit < 0);
+      while (isNaN(appData.percentDeposit) || appData.percentDeposit <= 0);
       do {
-        appData.moneyDeposit = +prompt('Какая у вас сумма депозита?' +
-          ' (0 или Cancel - 0)', 100000);
+        appData.moneyDeposit = +prompt('Какая у вас сумма депозита?', 100000);
       }
-      while (isNaN(appData.moneyDeposit) || appData.moneyDeposit < 0);
+      while (isNaN(appData.moneyDeposit) || appData.moneyDeposit <= 0);
     }
 
 
@@ -75,10 +72,9 @@ let appData = {
 			while (expense == null || expense.trim() === '');
 
       do {
-        amount = +prompt('Во сколько это обойдется?' +
-          ' (0 или Cancel - 0)', 500);
+        amount = +prompt('Во сколько это обойдется?', 500);
       }
-      while (isNaN(amount) || amount < 0);
+      while (isNaN(amount) || amount <= 0);
       appData.expenses[expense] = +amount;
     }
   },
