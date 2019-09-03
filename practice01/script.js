@@ -3,9 +3,9 @@
 let money,
   start = function () {
     do {
-      money = +prompt('Ваш месячный доход?', 30000);
+      money = +prompt('Ваш месячный доход? (0 или Cancel - Нет дохода)', 30000);
     }
-    while (isNaN(money) || money === 0);
+    while (isNaN(money) || money < 0);
   };
 
 start();
@@ -25,13 +25,13 @@ let appData = {
   mission: 100000,
   period: 6,
   asking: function () {
-		if(confirm('Есть ли у вас дополнительный источник заработка?')) {
+		if (confirm('Есть ли у вас дополнительный источник заработка?')) {
 			let itemIncome,
 				cashIncome;
 			do {
 				itemIncome = prompt('Какой у вас дополнительный заработок?', 'Таксую');
 			}
-			while (itemIncome.trim() === '');
+			while (itemIncome == null || itemIncome.trim() === '');
 
 			do {
 				cashIncome = +prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
@@ -45,10 +45,22 @@ let appData = {
 		do {
 			addExpenses = prompt('Перечислите возможные расходы', 'бар,казино,пиво');
 		}
-		while (addExpenses.trim() === '');
+		while (addExpenses == null || addExpenses.trim() === '');
 
     appData.addExpenses = addExpenses.split(',');
-    appData.deposit = confirm('Есть ли у вас депозит в банке?');
+    
+    if (confirm('Есть ли у вас депозит в банке?')) {
+      appData.deposit = true;
+      do {
+        appData.percentDeposit = +prompt('Какой у вас годовой процент?', 10);
+      }
+      while (isNaN(appData.percentDeposit) || appData.percentDeposit === 0);
+      do {
+        appData.moneyDeposit = +prompt('Какая у вас сумма депозита?', 100000);
+      }
+      while (isNaN(appData.moneyDeposit) || appData.moneyDeposit === 0);
+    }
+
 
     let expense,
 			amount;
@@ -57,7 +69,7 @@ let appData = {
       do {
 				expense = prompt('Введите обязательную статью расходов', 'Расход' + (i + 1));
 			}
-			while (expense.trim() === '');
+			while (expense == null || expense.trim() === '');
 
       do {
         amount = +prompt('Во сколько это обойдется?', 500);
