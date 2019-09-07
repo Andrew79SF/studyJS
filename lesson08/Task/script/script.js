@@ -40,7 +40,6 @@ let appData = {
 		deposit: false,
 		start: function() {
 			if (isNaN(salaryAmount.value) || salaryAmount.value.trim() === '') {
-				salaryAmount.value = '';
 				return;
 			}
 			appData.budget = +salaryAmount.value;
@@ -52,8 +51,8 @@ let appData = {
 			appData.getAddIncome();
 			appData.getBudget();
 			appData.showResult();
-
 			appData.blockFields();
+			
 		},
 		showResult: function() {
 			budgetMonthValue.value = appData.budgetMonth;
@@ -62,7 +61,8 @@ let appData = {
 			additionalExpensesValue.value = appData.addExpenses.join(', ');
 			additionalIncomeValue.value = appData.addIncome.join(', ');
 			targetMonthValue.value = Math.ceil(appData.getTargetMonth());
-			incomePeriodValue.value = appData.calcPeriod();
+			incomePeriodValue.value = appData.budgetMonth * periodSelect.value;
+			periodSelect.addEventListener('mousemove', appData.getIncomePeriodValue);
 		},
 		addIncomeBlock: function() {
 			let cloneIncomeItem = incomeItems[0].cloneNode(true),
@@ -150,12 +150,11 @@ let appData = {
 	      (appData.budgetDay < 300) ? 'Низкий уровень дохода' :
 	      (appData.budgetDay < 800) ? 'Средний уровень дохода' : 'Высокий уровень дохода';
 		},
-		calcPeriod: function() {
-			return appData.budgetMonth * periodSelect.value;
+		getIncomePeriodValue: function () {
+			incomePeriodValue.value = appData.budgetMonth * periodSelect.value;
 		},
 		changePeriod: function() {
 			periodAmount.innerHTML = periodSelect.value;
-			incomePeriodValue.value = appData.calcPeriod();
 		},
 	  getTargetMonthText: function() {
 	    if (appData.targetMonth < 0) {
