@@ -18,10 +18,15 @@ DomElement.prototype.createElement = function () {
   }
   elem.innerHTML = this.selector.slice(1);
   document.body.append(elem);
-  elem.style.height = this.height;
-  elem.style.width = this.width;
-  elem.style.backgroundColor = this.bg;
-  elem.style.fontSize = this.fontSize;
+  elem.style.cssText = `height: ${this.height};
+    width: ${this.width};
+    background-color: ${this.bg};
+    font-size: ${this.fontSize};
+    `;
+  // elem.style.height = this.height;
+  // elem.style.width = this.width;
+  // elem.style.backgroundColor = this.bg;
+  // elem.style.fontSize = this.fontSize;
 };
 
 let domElement = new DomElement('.hello', '300px', '500px', 'red', '40px');
