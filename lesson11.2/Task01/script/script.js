@@ -99,7 +99,7 @@ class AppData {
   }
 
   getIncome() {
-    incomeItems.forEach(function (item) {
+    incomeItems.forEach((item) => {
       const itemIncome = item.querySelector('.income-title').value,
         cashIncome = item.querySelector('.income-amount').value;
       if (itemIncome !== '' && cashIncome !== '') {
@@ -113,7 +113,7 @@ class AppData {
   }
 
   getExpenses() {
-    expensesItems.forEach(function (item) {
+    expensesItems.forEach((item) => {
       const itemExpenses = item.querySelector('.expenses-title').value,
         cashExpenses = item.querySelector('.expenses-amount').value;
       if (itemExpenses !== '' && cashExpenses !== '') {
@@ -128,7 +128,7 @@ class AppData {
 
   getAddExpenses() {
     const addExpenses = additionalExpensesItem.value.split(',');
-    addExpenses.forEach(function (item) {
+    addExpenses.forEach((item) => {
       item = item.trim();
       if (item !== '') {
         this.addExpenses.push(item);
@@ -137,7 +137,7 @@ class AppData {
   }
 
   getAddIncome() {
-    additionalIncomeItem.forEach(function (item) {
+    additionalIncomeItem.forEach((item) => {
       const itemValue = item.value.trim();
       if (itemValue != '') {
         this.addIncome.push(itemValue);
@@ -172,7 +172,7 @@ class AppData {
 
   blockFields() {
     const inputFields = leftSide.querySelectorAll("input[type='text']");
-    inputFields.forEach(function (item) {
+    inputFields.forEach((item) => {
       item.setAttribute('disabled', '');
     });
     start.style.display = 'none';
@@ -203,13 +203,13 @@ class AppData {
   resetValues() {
     const _this = this;
     inputFields = leftSide.querySelectorAll("input[type='text']");
-    inputFields.forEach(function (item) {
+    inputFields.forEach((item) => {
       item.value = '';
       item.disabled = false;
     });
 
     inputFields = rightSide.querySelectorAll("input[type='text']");
-    inputFields.forEach(function (item) {
+    inputFields.forEach((item) => {
       item.value = '';
       item.disabled = false;
     });
@@ -271,23 +271,23 @@ class AppData {
     start.addEventListener('click', newStart);
     cancel.addEventListener('click', newResetValues);
 
-    expensePlus.addEventListener('click', function () {
+    expensePlus.addEventListener('click', () => {
       expensesItems = newAddBlock(".expenses-title", ".expenses-amount", ".expenses-items", expensesItems, expensePlus);
     });
 
-    incomePlus.addEventListener('click', function () {
+    incomePlus.addEventListener('click', () => {
       incomeItems = newAddBlock(".income-title", ".income-amount", ".income-items", incomeItems, incomePlus);
     });
 
     periodSelect.addEventListener('mousemove', newChangePeriod);
 
-    depositCheck.addEventListener('change', function () {
+    depositCheck.addEventListener('change', () => {
       if (depositCheck.checked) {
         depositBank.style.display = 'inline-block';
         depositAmount.style.display = 'inline-block';
         depositPercent.style.display = 'inline-block';
         _this.deposit = true;
-        depositBank.addEventListener('change', function () {
+        depositBank.addEventListener('change', function() {
           let selectIndex = this.options[this.selectedIndex].value;
           if (selectIndex === 'other') {
             depositPercent.disabled = false;
@@ -309,10 +309,10 @@ class AppData {
       }
     });
 
-    inputName.forEach(function (item) {
+    inputName.forEach((item) => {
       _this.addEventListenerName(item);
     });
-    inputSum.forEach(function (item) {
+    inputSum.forEach((item) => {
       _this.addEventListenerSum(item);
     });
   }
