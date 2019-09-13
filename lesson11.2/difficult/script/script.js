@@ -314,6 +314,12 @@ class AppData {
   }
   
   deleteCookies() {
+    const deleteCookie = (name) => {
+      let date = new Date();
+      date.setTime(date.getTime() - 1);
+      document.cookie = name += "=; expires=" + date.toGMTString();
+    };
+    
     deleteCookie('budgetMonth');
     deleteCookie('budgetDay');
     deleteCookie('expensesMonth');
@@ -323,12 +329,6 @@ class AppData {
     deleteCookie('target');
     deleteCookie('period');
     deleteCookie('isLoad');
-
-    function deleteCookie(name) {
-      let date = new Date();
-      date.setTime(date.getTime() - 1);
-      document.cookie = name += "=; expires=" + date.toGMTString();
-    }
   }
 
   eventListeners() {
