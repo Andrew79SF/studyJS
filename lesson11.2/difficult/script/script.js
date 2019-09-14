@@ -300,17 +300,12 @@ class AppData {
       map.set(newItem[0], newItem[1]);
     });
 
-    if (localStorage.getItem('budgetMonth') == map.get('budgetMonth') &&
-      localStorage.getItem('budgetDay') == map.get('budgetDay') &&
-      localStorage.getItem('expensesMonth') == map.get('expensesMonth') &&
-      localStorage.getItem('addExpenses') == map.get('addExpenses') &&
-      localStorage.getItem('addIncome') == map.get('addIncome') &&
-      localStorage.getItem('incomePeriod') == map.get('incomePeriod') &&
-      localStorage.getItem('target') == map.get('target') &&
-      localStorage.getItem('period') == map.get('period')) {
-        return true;
-      }
-      return false;
+    const comparison = (str) => localStorage.getItem(str) === map.get(str);
+
+    const arr = ['budgetMonth', 'budgetDay', 'expensesMonth', 'addExpenses', 'addIncome',
+      'incomePeriod', 'target', 'period'];
+    
+    return arr.length == arr.filter(item => comparison(item)).length;
   }
   
   deleteCookies() {
@@ -320,37 +315,27 @@ class AppData {
       document.cookie = name += "=; expires=" + date.toGMTString();
     };
     
-    deleteCookie('budgetMonth');
-    deleteCookie('budgetDay');
-    deleteCookie('expensesMonth');
-    deleteCookie('addExpenses');
-    deleteCookie('addIncome');
-    deleteCookie('incomePeriod');
-    deleteCookie('target');
-    deleteCookie('period');
-    deleteCookie('isLoad');
+    ['budgetMonth', 'budgetDay', 'expensesMonth', 'addExpenses', 'addIncome',
+      'incomePeriod', 'target', 'period', 'isLoad'].forEach(deleteCookie);
   }
 
   eventListeners() {
     const _this = this;
 
-    const newStart = this.start.bind(this),
-      newAddBlock = this.addBlock.bind(this),
-      newResetValues = this.resetValues.bind(this),
-      newChangePeriod = this.changePeriod.bind(this);
-
-    start.addEventListener('click', newStart);
-    cancel.addEventListener('click', newResetValues);
+    start.addEventListener('click', this.start.bind(this));
+    cancel.addEventListener('click', this.resetValues.bind(this));
 
     expensePlus.addEventListener('click', () => {
-      expensesItems = newAddBlock(".expenses-title", ".expenses-amount", ".expenses-items", expensesItems, expensePlus);
+      expensesItems = this.addBlock(".expenses-title", ".expenses-amount",
+        ".expenses-items", expensesItems, expensePlus);
     });
 
     incomePlus.addEventListener('click', () => {
-      incomeItems = newAddBlock(".income-title", ".income-amount", ".income-items", incomeItems, incomePlus);
+      incomeItems = this.addBlock(".income-title", ".income-amount",
+        ".income-items", incomeItems, incomePlus);
     });
 
-    periodSelect.addEventListener('mousemove', newChangePeriod);
+    periodSelect.addEventListener('mousemove', this.changePeriod.bind(this));
 
     depositCheck.addEventListener('change', () => {
         if (depositCheck.checked) {
@@ -388,11 +373,9 @@ class AppData {
     });
 
     if (localStorage.getItem('isLoad') && this.checkCookies()) {
-    this.budgetMonth = localStorage.getItem('budgetMonth');
-    this.budgetDay = localStorage.getItem('budgetDay');
-    this.expensesMonth = localStorage.getItem('expensesMonth');
-    this.addExpenses = localStorage.getItem('addExpenses');
-    this.addIncome = localStorage.getItem('addIncome');
+      ['budgetMonth', 'budgetDay', 'expensesMonth', 'addExpenses', 'addIncome'].forEach (str => {
+        this[str] = localStorage.getItem(str);
+      });
     incomePeriodValue.value = localStorage.getItem('incomePeriod');
     this.targetMonth = localStorage.getItem('target');
     periodSelect.value = localStorage.getItem('period');
