@@ -1,0 +1,15 @@
+body {
+	background-color: darkblue;
+	font-size: 32px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	text-align: center;
+	color: wheat;
+}
+
+.main {
+	margin: 100px auto;
+	width: 40%;
+	padding: 10px;
+	background-color: indigo;
+	border: 5px solid blueviolet;
+}
