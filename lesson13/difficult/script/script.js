@@ -1,24 +1,24 @@
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   // Identify Mobile Device
   let isMobile = {
-    Android: function () {
+    Android: () => {
       return navigator.userAgent.match(/Android/i);
     },
-    BlackBerry: function () {
+    BlackBerry: () => {
       return navigator.userAgent.match(/BlackBerry/i);
     },
-    iOS: function () {
+    iOS: () => {
       return navigator.userAgent.match(/iPhone|iPad|iPod/i);
     },
-    Opera: function () {
+    Opera: () => {
       return navigator.userAgent.match(/Opera Mini/i);
     },
-    Windows: function () {
+    Windows: () => {
       return navigator.userAgent.match(/IEMobile/i);
     },
-    any: function () {
+    any: () => {
       return (isMobile.Android() || isMobile.BlackBerry() ||
         isMobile.iOS() || isMobile.Opera() || isMobile.Windows()) === null;
     }
@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', function () {
   // Timer
   const deadLine = '20 october 2019';
 
-  setInterval(function () {
+  setInterval(() => {
     let timerHours = document.querySelector('#timer-hours'),
       timerMinutes = document.querySelector('#timer-minutes'),
       timerSeconds = document.querySelector('#timer-seconds'),
@@ -37,9 +37,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     timeRemaining = timeRemaining < 0 ? 0 : timeRemaining;
 
-    setTime(timeRemaining);
-
-    function setTime(timeRemaining) {
+    let setTime = (timeRemaining) => {
       let seconds = Math.floor(timeRemaining % 60),
         minutes = Math.floor((timeRemaining / 60) % 60),
         hours = Math.floor(timeRemaining / 60 / 60);
@@ -47,8 +45,10 @@ window.addEventListener('DOMContentLoaded', function () {
       timerHours.textContent = hours < 10 ? '0' + hours : hours;
       timerMinutes.textContent = minutes < 10 ? '0' + minutes : minutes;
       timerSeconds.textContent = seconds < 10 ? '0' + seconds : seconds;
-    }
-  }, 1000, deadLine);
+    };
+
+    setTime(timeRemaining);
+    }, 1000, deadLine);
 
   // Menu
   const toggleMenu = () => {
@@ -70,12 +70,15 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     const handlerMenu = () => {
-      menu.classList.toggle('active-menu');
-      // if (!menu.style.transform || menu.style.transform === 'translate(-100%)') {
-      //   menu.style.transform = 'translate(0)';
-      // } else {
-      //   menu.style.transform = 'translate(-100%)';
-      // }
+      if (isMobile.any()) {
+        menu.classList.toggle('active-menu');
+      } else {
+        if (!menu.style.transform || menu.style.transform === 'translate(-100%)') {
+          menu.style.transform = 'translate(0)';
+        } else {
+          menu.style.transform = 'translate(-100%)';
+        }
+      }
     };
   };
 
@@ -117,7 +120,7 @@ window.addEventListener('DOMContentLoaded', function () {
     } else {
       op = 1;
     }
-    let idInterval = setInterval(function () {
+    let idInterval = setInterval(() => {
       op = fade ? op - 0.02 : op + 0.02;
       popup.style.opacity = op;
       count--;
@@ -134,7 +137,7 @@ window.addEventListener('DOMContentLoaded', function () {
   // Smooth Scroll
   const anchors = document.querySelectorAll('a[href*="#"]');
 
-  anchors.forEach ((anchor) => {
+  anchors.forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
       e.preventDefault();
       console.log(e);
