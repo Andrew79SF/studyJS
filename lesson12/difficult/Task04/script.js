@@ -20,6 +20,8 @@ let fish = document.querySelector('.fish'),
 		idAnimate = requestAnimationFrame(swimAnimate);
 	};
 
+elem.style.transform = 'scaleX(-1)';
+
 startBtn.addEventListener('click', start);
 resetBtn.addEventListener('click', reset);
 backBtn.addEventListener('click', back);
@@ -50,17 +52,17 @@ function reset() {
 
 function back() {
   if (!reverse) {
-    elem.style.transform = 'scaleX(-1)';
+    elem.style.transform = '';
     reverse = true;
   } else {
-    elem.style.transform = '';
+    elem.style.transform = 'scaleX(-1)';
 		reverse = false;
 	}
 }
 
 function getCountX(countX) {
 	countX = (reverse) ? countX - 0.14 : countX + 0.14;
-	if (countX < 0 || countX > 90) {
+	if (countX < 0 || countX > 83) {
 		back();
 	}
 	return countX;
