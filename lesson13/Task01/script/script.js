@@ -70,12 +70,15 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     const handlerMenu = () => {
-      menu.classList.toggle('active-menu');
-      // if (!menu.style.transform || menu.style.transform === 'translate(-100%)') {
-      //   menu.style.transform = 'translate(0)';
-      // } else {
-      //   menu.style.transform = 'translate(-100%)';
-      // }
+      if (isMobile.any()) {
+        menu.classList.toggle('active-menu');
+      } else {
+        if (!menu.style.transform || menu.style.transform === 'translate(-100%)') {
+          menu.style.transform = 'translate(0)';
+        } else {
+          menu.style.transform = 'translate(-100%)';
+        }
+      }
     };
   };
 
