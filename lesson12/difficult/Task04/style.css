@@ -1,0 +1,46 @@
+html, body {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background: url(ocean.jpg) no-repeat;
+	background-size: cover;
+}
+
+.fish {
+	position: relative;
+	top: 25vh;
+	left: 0vh;
+	width: 20vh;
+}
+
+#elem {
+	height: 15vh;
+	width: 20vh;
+	transform: scaleZ(0.25);
+	transition: 1s;
+}
+
+#start, #reset, #back {
+	background-color: aqua;
+	padding: 0;
+	font-size: 2vh;
+	height: 7vh;
+	width: 15vh;
+}
+
+.btn1, .btn2, .btn3 {
+	position: relative;
+	text-align: center;
+	margin: 0 auto;
+	top: 35vh;
+}
+
+.btn2 {
+	top: 37vh !important;
+}
+
+.btn3 {
+	top: 39vh !important;
+}
