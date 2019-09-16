@@ -73,10 +73,10 @@ window.addEventListener('DOMContentLoaded', () => {
       if (isMobile.any()) {
         menu.classList.toggle('active-menu');
       } else {
-        if (!menu.style.transform || menu.style.transform === 'translate(-100%)') {
+        if (!menu.style.transform) {
           menu.style.transform = 'translate(0)';
         } else {
-          menu.style.transform = 'translate(-100%)';
+          menu.style.transform = '';
         }
       }
     };
@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', () => {
       if (isMobile.any()) {
         fade(popup, true);
       } else {
-        popup.style.display = 'none';
+        popup.style.display = '';
       }
     });
   };
@@ -128,10 +128,10 @@ window.addEventListener('DOMContentLoaded', () => {
         clearInterval(idInterval);
         if (fade) {
           popup.style.display = 'none';
+          popup.style.opacity = 1;
         }
       }
     }, 5);
-    return;
   };
 
 });
