@@ -59,10 +59,9 @@ NewDomElement.prototype = Object.create(DomElement.prototype);
 
 let newDomElement = new NewDomElement('.hello', '100px', '100px', 'red', '40px', 'absolute');
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
 			alert("DOM готов!");
+			newDomElement.createElement();
+			newDomElement.addPosition();
+			newDomElement.addListeners();
 		});
-
-newDomElement.createElement();
-newDomElement.addPosition();
-newDomElement.addListeners();
