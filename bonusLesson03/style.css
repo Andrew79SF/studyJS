@@ -1,0 +1,26 @@
+body {
+	background-color: #FFFFFF;
+	transition: 0.3s;
+}
+
+.wrapper {
+	font-family: 'Franklin Gothic Medium',
+	'Arial Narrow',
+	Arial,
+	sans-serif;
+	font-size: 6vh;
+	position: relative;
+	text-align: center;
+	top: 15vh;
+	margin: 0 auto;
+}
+
+button {
+	font-family: 'Franklin Gothic Medium',
+	'Arial Narrow',
+	Arial,
+	sans-serif;
+	font-size: 7vh;
+	height: 10vh;
+	width: 20vw;
+}
