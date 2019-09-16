@@ -140,7 +140,9 @@ window.addEventListener('DOMContentLoaded', () => {
   anchors.forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
       e.preventDefault();
-      console.log(e);
+      if (e.target.classList[0] === 'close-btn') {
+        return;
+      }
       const blockID = anchor.getAttribute('href').substr(1);
       document.getElementById(blockID).scrollIntoView({
         behavior: 'smooth',
@@ -148,5 +150,5 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
-
+  
 });
