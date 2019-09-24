@@ -349,6 +349,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (calcCount.value > 1) {
         countValue += (calcCount.value - 1) / 10;
+      } else if (calcCount.value == '0') {
+        countValue = 0;
       }
 
       if (calcDay.value && calcDay.value < 5) {
@@ -387,26 +389,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   };
-
-  
-  // const changeTotal = (total) => {
-  //   const totalValue = document.getElementById('total');
-  //   if (total > totalValue.textContent) {
-  //     for (let newTotal = totalValue.textContent; newTotal != total; newTotal++) {
-  //       printTotal(newTotal + 1);
-  //       for (let index = 0; index < 10000000; index++) {
-  //       }
-  //     }
-  //   } else if (total < totalValue.textContent) {
-  //     totalValue.textContent = total;
-  //   }
-    
-  //   function printTotal(total) {
-  //     console.log(total);
-  //     totalValue.textContent = total;
-  //   }
-  // };
-  
 
   calc(100);
 
