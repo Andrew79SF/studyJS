@@ -332,6 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Calculator ******************************************
+  let idChange;
   const calc = (price = 100) => {
 
     const calcType = document.querySelector('.calc-type'),
@@ -376,8 +377,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         totalValue.textContent = newTotal;
       };
+      
+      if (idChange) {
+        clearInterval(idChange);
+      }
 
-      let idChange = setInterval(changeTotal);
+      idChange = setInterval(changeTotal);
     };
 
     calcBlock.addEventListener('change', (event) => {
