@@ -24,9 +24,10 @@ const palindrom = (str) => {
       }
     }
   }
-  return newStr;
+  return newStr.length > 1 ? newStr : '';
 };
 
 console.log(palindrom('fffkffgffkfdk'));
 console.log(palindrom('абвгоогвфф'));
+console.log(palindrom('dsdsadada'));
 
