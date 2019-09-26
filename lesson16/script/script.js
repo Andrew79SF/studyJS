@@ -107,6 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       popup.style.display = 'none';
     }
+
+    document.getElementById('form3-name').value = '';
+    document.getElementById('form3-phone').value = '';
+    document.getElementById('form3-email').value = '';
   };
 
   // Open PopUp
