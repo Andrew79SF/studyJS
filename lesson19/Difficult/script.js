@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const img = document.getElementById('pic');
 	const video = document.getElementById('video');
+	const loadMessage = './loading.gif';
 	let target;
 	let picture;
 
@@ -17,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		} else {
 			return;
 		}
+		img.style.display = 'block';
+		img.src = loadMessage;
+
 		fetch(serverName, {
 				method: 'GET',
 				mode: 'cors'

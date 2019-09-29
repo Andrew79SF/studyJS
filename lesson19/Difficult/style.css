@@ -5,35 +5,43 @@ html, body {
 
 body {
 	background-size: cover;
+	background-color: royalblue;
 }
 
 #card {
-	height: 700px;
-	background-color: royalblue;
+	height: 90vh;
 	position: relative;
 }
 
 button {
-	width: 150px;
-	height: 50px;
+	font-family: 'Franklin Gothic Medium',
+	'Arial Narrow',
+	Arial,
+	sans-serif;	
+	font-size: 2vh;
+	background-color: cyan;
+	margin: 0 1vw;
+	width: 10vw;
+	height: 5vh;
 }
 
 #buttons {
 	text-align: center;
-	margin: 10px;
+	margin: 1vh;
 	/* position: absolute; */
 }
 
 img {
-	padding-top: 25px;
-	height: 650px;
+	padding-top: 2vh;
+	max-width: 100vh;
+	height: 85vh;
 	margin: 0 auto;
 	display: none;
 }
 
 video {
-	padding-top: 25px;
-	height: 650px;
+	padding-top: 2vh;
+	height: 75vh;
 	margin: 0 auto;
 	display: none;
 }
