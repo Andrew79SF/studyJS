@@ -479,9 +479,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // send-ajax-form
   const sendForm = () => {
-    const errorMessage = 'Что-то пошло не так...',
-      loadMessage = 'Загрузка...',
-      successMessage = 'Спасибо! Мы скоро с Вами свяжемся!';
+    const errorMessage = '<img src = "./images/status/error.png" height = "150vh">',
+      loadMessage = '<img src = "./images/status/loading.gif" height = "70vh">',
+      successMessage = '<img src = "./images/status/success.png" height = "70vh">';
+      // const errorMessage = 'Что-то пошло не так...',
+      //   loadMessage = 'Загрузка...',
+      // successMessage = 'Спасибо! Мы скоро с Вами свяжемся!';
 
     // const form = document.getElementById('form1');
     const form = document.querySelector('body');
@@ -503,7 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       target.appendChild(statusMessage);
       // form.appendChild(statusMessage);
-      statusMessage.textContent = loadMessage;
+      // statusMessage.textContent = loadMessage;
 
       const formData = new FormData(target);
       let body = {};
@@ -513,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       postData(body,
         () => {
-          statusMessage.textContent = successMessage;
+          statusMessage.innerHTML = successMessage;
 
           // Clear all inputs
           const allInput = document.querySelectorAll('INPUT');
@@ -522,7 +525,8 @@ document.addEventListener('DOMContentLoaded', () => {
           });
         },
         (error) => {
-          statusMessage.textContent = errorMessage;
+          // statusMessage.textContent = errorMessage;
+          statusMessage.innerHTML = errorMessage;
           console.error(error);
         }
       );
@@ -531,7 +535,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const postData = (body, outputData, errordata) => {
       const request = new XMLHttpRequest();
       request.addEventListener('readystatechange', () => {
-        statusMessage.textContent = loadMessage;
+        // statusMessage.textContent = loadMessage;
+        statusMessage.innerHTML = loadMessage;
 
         if (request.readyState !== 4) {
           return;
