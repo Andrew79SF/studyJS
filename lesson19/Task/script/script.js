@@ -108,9 +108,22 @@ document.addEventListener('DOMContentLoaded', () => {
       popup.style.display = 'none';
     }
 
-    document.getElementById('form3-name').value = '';
-    document.getElementById('form3-phone').value = '';
-    document.getElementById('form3-email').value = '';
+    const form3 = document.getElementById('form3');
+    const allInput = form3.querySelectorAll('input');
+    allInput.forEach((elem) => {
+      console.log(elem.classList);
+      elem.classList.remove('success');
+      elem.classList.remove('error');
+      if (elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')) {
+        elem.nextElementSibling.remove();
+      }
+      elem.classList.remove('validator-error');
+      elem.value = '';
+    });
+    // console.log(allInput);
+    // document.getElementById('form3-name').value = '';
+    // document.getElementById('form3-phone').value = '';
+    // document.getElementById('form3-email').value = '';
   };
 
   // Open PopUp
@@ -405,8 +418,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const valid1 = new Validator({
     selector: '#form1',
     pattern: {
-      phone: /^\+7\d{10}$/,
-      name: /[а-яё]+/i
+      phone: /^\+?[78]\d{10}$/,
+      name: /[а-яё]+/i,
     },
     method: {
       'form1-name': [
@@ -427,7 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const valid2 = new Validator({
     selector: '#form2',
     pattern: {
-      phone: /^\+7\d{10}$/,
+      phone: /^\+?[78]\d{10}$/,
       name: /[а-яё]+/i,
       message: /[а-яё]+/i
     },
@@ -454,8 +467,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const valid3 = new Validator({
     selector: '#form3',
     pattern: {
-      phone: /^\+7\d{10}$/,
-      name: /[а-яё]+/i
+      phone: /^\+?[78]\d{10}$/,
+      name: /[а-яё]+/i,
     },
     method: {
       'form3-name': [
@@ -516,9 +529,18 @@ document.addEventListener('DOMContentLoaded', () => {
             throw new Error('Status network not 200');
           }
           statusMessage.innerHTML = successMessage;
+          // statusMessage.innerHTML = 'hello';
+          setTimeout(() => {
+            statusMessage.innerHTML = '';
+          }, 2000);
           // Clear all inputs
           const allInput = document.querySelectorAll('input');
           allInput.forEach((elem) => {
+            elem.classList.remove('success');
+            elem.classList.remove('error');
+            if (elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')) {
+              elem.nextElementSibling.remove();
+            }
             elem.value = '';
           });
         })
@@ -557,7 +579,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!/[0-9+]/.test(keyValue)) {
         event.preventDefault();
       } else {
-        if (targetValue.length > 0 && keyValue === '+') {
+        if ((targetValue.length > 0 && keyValue === '+') ||
+          (targetValue[0] === '+' && targetValue.length == 1 && keyValue !== '7') ||
+          (targetValue.length === 0 && (keyValue !== '+' && keyValue !== '8'))) {
           event.preventDefault();
         }
       }
