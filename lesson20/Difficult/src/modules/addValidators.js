@@ -112,7 +112,7 @@
 				}
 
 				if (!this.pattern.email) {
-					this.pattern.email = /^\w+@\w+\.\w{2,}$/;
+					this.pattern.email = /^\w+\.?\-?\_?\w+@\w+\.\w{2,}$/;
 				}
 			}
 		}
@@ -145,7 +145,7 @@
 			pattern: {
 				phone: /^\+?[78]\d{10}$/,
 				name: /[а-яё]+/i,
-				message: /[а-яё]+/i
+				message: /[а-яё,.]+/i
 			},
 			method: {
 				'form2-name': [

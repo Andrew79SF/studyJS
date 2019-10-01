@@ -5,7 +5,7 @@
 				keyValue = event.key;
 
 			if (target === 'user_name' || target === 'user_message') {
-				if (!/[а-я А-Я]/.test(keyValue)) {
+				if (!/[а-я А-Я,.]/.test(keyValue)) {
 					event.preventDefault();
 				}
 			}

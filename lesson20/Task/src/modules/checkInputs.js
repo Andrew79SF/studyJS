@@ -4,8 +4,13 @@
 				targetValue = event.target.value,
 				keyValue = event.key;
 
-			if (target === 'user_name' || target === 'user_message') {
+			if (target === 'user_name') {
 				if (!/[а-я А-Я]/.test(keyValue)) {
+					event.preventDefault();
+				}
+			}
+			if (target === 'user_message') {
+				if (!/[а-я А-Я.,?!]/.test(keyValue)) {
 					event.preventDefault();
 				}
 			}

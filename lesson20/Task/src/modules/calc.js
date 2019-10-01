@@ -31,24 +31,25 @@ const calc = (price = 100) => {
 		}
 
 		// Эффект перечисления чисел 
-		let newTotal = totalValue.textContent;
+		// 	let newTotal = totalValue.textContent;
 
-		const changeTotal = () => {
-			if (total > newTotal) {
-				newTotal++;
-			} else if (total < newTotal) {
-				newTotal--;
-			} else {
-				clearInterval(idChange);
-			}
-			totalValue.textContent = newTotal;
-		};
+		// 	const changeTotal = () => {
+		// 		if (total > newTotal) {
+		// 			newTotal++;
+		// 		} else if (total < newTotal) {
+		// 			newTotal--;
+		// 		} else {
+		// 			clearInterval(idChange);
+		// 		}
+		// 		totalValue.textContent = newTotal;
+		// 	};
 
-		if (idChange) {
-			clearInterval(idChange);
-		}
+		// 	if (idChange) {
+		// 		clearInterval(idChange);
+		// 	}
 
-		idChange = setInterval(changeTotal);
+		// 	idChange = setInterval(changeTotal);
+		totalValue.textContent = total;
 	};
 
 	calcBlock.addEventListener('change', (event) => {
